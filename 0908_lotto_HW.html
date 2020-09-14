@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 作業
+      // 用上面練習完成的 function 製作威力彩號碼產生器
+      // 將隨機出的數字用 document.write() 顯示在網頁上
+      // 威力彩規則
+
+      // A 區 1~38 取 6 個數字
+      // B 區 1~8 取 1 個數字
+      const lotto = (min, max) => {
+        let number = Math.random() * (max - min) + min;
+        return Math.round(number);
+      };
+
+      let numbersA = "";
+      for (let i = 0; i <= 5; i++) {
+        let numbers = lotto(1, 38);
+        if (numbersA.includes(numbers)) {
+          //如果true的話，表示數字重複出現，就把i加回去，再跑一次迴圈
+          i -= 1;
+          continue;
+        } else {
+          numbersA += numbers + " ";
+        }
+      }
+      document.write(`A區號碼：${numbersA}`);
+      document.write(`<br>`);
+      document.write(`B區號碼：${lotto(1, 8)}`);
+    </script>
+  </body>
+</html>
